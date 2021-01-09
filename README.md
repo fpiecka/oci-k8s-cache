@@ -5,7 +5,7 @@ Oracle Cloud Infrastructure Kubernetes token cache - because no one wants to wai
 ## Installation
 
 ```bash
-cd ~
+cd ~ # make sure that you don't add this binary to your Go Modules project :)
 GO111MODULE=on go get -u github.com/pyr-sh/oci-k8s-cache@latest
 ```
 
