@@ -20,6 +20,7 @@ var (
 	ociPath             = flag.String("oci-path", "oci", "path to the oci binary")
 	clusterID           = flag.String("cluster-id", "", "cluster id to pass to the OCI CLI")
 	region              = flag.String("region", "us-ashburn-1", "OCI region to use")
+        profile             = flag.String("profile", "", "OCI CLI profile to use")
 )
 
 type credentials struct {
@@ -83,7 +84,7 @@ func main() {
 		return
 	}
 
-	cmd := exec.Command(fullOCIPath, "ce", "cluster", "generate-token", "--cluster-id", *clusterID, "--region", *region)
+	cmd := exec.Command(fullOCIPath, "ce", "cluster", "generate-token", "--cluster-id", *clusterID, "--region", *region, "--profile", *profile)
 	output, err := cmd.Output()
 	if err != nil {
 		if exitError, ok := err.(*exec.ExitError); ok {
